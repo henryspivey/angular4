@@ -1,0 +1,39 @@
+<div style="float: right;">
+	<input type="button" value="toggle dark bg" (click)="toggleBackground()">
+	<input type="button" value="toggle font size" (click)="toggleFontsize()">
+</div>
+
+<!-- <h1 class="{{use_dark_bg ? 'darkbg' : ''}}"> These are our recipes</h1> -->
+
+<!-- <h1 [class.darkbg]="use_dark_bg"> These are our recipes</h1> -->
+<h1 [ngClass]="current_classes" [ngStyle]="current_styles"> These are our recipes</h1>
+<div *ngFor="let recipe of recipes">
+	<!-- See line 13 of recipe summary -->
+	<app-recipe-summary [recipe]="recipe" (zoomIn)="zoomInOnRecipe(recipe)"></app-recipe-summary>
+</div>
+<div style="clear: both;"></div>
+<div class="newrecipe panel panel-default" style="max-width: 700px;">
+	<div class="panel-heading">
+		<h4>Add New Recipe</h4>
+	</div>
+	<div class="panel-body">
+		<div class="input-group">
+			<input style="width: 300px;" [(ngModel)]="recipe_in_progress.title" type="text" class="form-control" placeholder="Recipe title" name="title"/>
+		</div>
+		<div class="input-group">
+			<textarea style="width: 300px;" rows="5" [(ngModel)]="recipe_in_progress.description" type="text" class="form-control" placeholder="Recipe description" name="description"></textarea>
+		</div>
+		<div class="input-group">
+			<input type="text" class="form-control" [(ngModel)]="recipe_in_progress.feeds_this_many" placeholder="Feeds this many" name="feeds_this_many"/>
+			<span class="input-group-addon">people</span>
+		</div>
+		<div class="input-group">
+			<input type="text" class="form-control" [(ngModel)]="recipe_in_progress.preparation_time" placeholder="Preparation time" name="preparation_time"/>
+			<span class="input-group-addon">minutes</span>
+
+		</div>
+		<div class="input-group">
+			<input type="button" value="Add Recipe" (click)="addRecipeClicked()"/>
+		</div>
+	</div>
+</div>
