@@ -29,7 +29,11 @@ import { RecipeDetailsComponent } from './components/recipe-details/recipe-detai
         path: '',
         redirectTo: '/recipes',
         pathMatch: 'full'
-      }
+      },
+      {
+        path: 'recipes/:recipe_id',
+        component: RecipeDetailsComponent
+      },
     ])
   ],
   providers: [],
