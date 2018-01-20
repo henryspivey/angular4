@@ -15,16 +15,19 @@ export class RecipeSummaryComponent implements OnInit {
 
   @Output()
   zoomIn: EventEmitter<Recipe> = new EventEmitter();
-  userClicked: EventEmitter<number> = new EventEmitter();
+  userClick: EventEmitter<number> = new EventEmitter();
 
   constructor() { }
 
-  public zoomClicked() {
-    this.zoomIn.emit(this.recipe);
+  public userClicked() {    
+    
+    //this.userClick.emit(this.recipe.id);
+    console.log("summary clicked");
+    return this.recipe.id;
   }
 
-  public userClicked() {
-    this.userClicked.emit(this.recipe.id);
+  public zoomClicked() {
+    this.zoomIn.emit(this.recipe);
   }
 
   ngOnInit() {
